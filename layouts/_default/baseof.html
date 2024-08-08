@@ -37,6 +37,7 @@
                 crossorigin="anonymous"></script>
         {{- end }}
         {{- end }}
+        {{- if hugo.IsProduction }}
         {{- with .Site.Params.gtag }}
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
         <script>
@@ -45,7 +46,8 @@
           gtag('js', new Date());
           gtag('config', '{{ . }}');
         </script>
-        {{ end -}}
+        {{- end }}
+        {{- end }}
     </head>
     <body class="flex print:block flex-col sm:flex-row min-h-screen bg-gradient-to-r from-5% from-zinc-800 to-zinc-950 text-zinc-50 antialiased">
         {{ partial "sidebar.html" . -}}
