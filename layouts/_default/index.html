@@ -1,24 +1,24 @@
 {{ define "main" -}}
-<section class="flex flex-col space-y-6 mx-auto px-4 py-4 lg:py-8 max-w-5xl text-balance text-left lg:text-center">
-    <header class="text-4xl md:text-5xl font-extrabold">
-        <h1>{{ .Site.Data.main.header.hello }}</h1>
-        <div>
-            <span>{{ .Site.Data.main.header.slider.before }}</span>
-            <span></span>
-            <div class="inline-flex flex-col h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.5xl)*theme(lineHeight.tight))] overflow-hidden">
-                <ul class="block animate-text-slide-2 text-center leading-tight text-transparent bg-clip-text bg-gradient-to-b from-green-400 via-blue-500 to-purple-500">
-                    {{- range .Site.Data.main.header.slider.barrel }}
-                    <li>{{ . }}</li>
-                    {{- end }}
-                </ul>
+<article>
+    <header class="mx-auto lg:mt-8 max-w-5xl text-balance text-left lg:text-center">
+        <div class="mb-4 text-4xl lg:text-5xl font-extrabold">
+            <h1>{{ .Site.Data.main.header.hello }}</h1>
+            <div>
+                <span>{{ .Site.Data.main.header.slider.before }}</span>
+                <span></span>
+                <div class="inline-flex flex-col h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] lg:h-[calc(theme(fontSize.5xl)*theme(lineHeight.tight))] overflow-hidden">
+                    <ul class="block animate-text-slide-2 text-center leading-tight text-transparent bg-clip-text bg-gradient-to-b from-green-400 via-blue-500 to-purple-500">
+                        {{- range .Site.Data.main.header.slider.barrel }}
+                        <li>{{ . }}</li>
+                        {{- end }}
+                    </ul>
+                </div>
+                <span></span>
+                <span>{{ .Site.Data.main.header.slider.after }}</span>
             </div>
-            <span></span>
-            <span>{{ .Site.Data.main.header.slider.after }}</span>
         </div>
+        <div class="mb-6 lg:px-24 text-zinc-400 [&_a]:text-white">{{ .Site.Data.main.header.short | markdownify }}</div>
     </header>
-    <div class="text-zinc-400 lg:px-24 [&_a]:text-white">{{ .Site.Data.main.header.short | markdownify }}</div>
-</section>
-<section>
     <ul class="mx-auto max-w-5xl grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {{- range .Site.Data.main.cards }}
         <li class="relative glow-capture">
@@ -89,5 +89,5 @@
         </li>
         {{- end }}
     </ul>
-</section>
+</article>
 {{ end }}
