@@ -1,5 +1,5 @@
-<section x-data="{ sidebarOpen: true, sidebarInit() { this.sidebarOpen = window.innerWidth > 639 } }"
-         @resize.debounce.100.window="sidebarInit()"
+<section x-data="{ sidebarOpen: true, lastWidth: window.innerWidth, sidebarInit() { this.sidebarOpen = window.innerWidth > 639 } }"
+         @resize.window.debounce.100="if (window.innerWidth != this.lastWidth) { this.lastWidth = window.innerWidth; sidebarInit() }"
          x-init="sidebarInit()"
          class="flex flex-col justify-between p-2 space-y-4 print:static sm:fixed print:h-auto sm:h-screen w-full sm:w-[240px] overflow-y-auto">
     <div class="space-y-4">
