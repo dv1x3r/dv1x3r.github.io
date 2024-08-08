@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}" class="dark">
+    <head>
+        <title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description"
+              content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
+        {{- if isset .Params "tags" }}
+        <meta name="keywords"
+              content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}">
+        {{- end }}
+        <meta name="theme-color" content="#18181b">
+        <link rel="canonical" href="{{ .Site.BaseURL }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        {{- $css := resources.Get "sass/main.scss" }}
+        {{- $css = $css | toCSS (dict "transpiler" "dartsass" "targetPath" "css/main.css" "includePaths" (slice "node_modules")) }}
+        {{- $css = $css | postCSS (dict "use" "tailwindcss autoprefixer" "noMap" true) }}
+        {{- if hugo.IsDevelopment }}
+        <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+        {{- else }}
+        {{- with $css | minify | fingerprint }}
+        <link rel="stylesheet"
+              href="{{ .RelPermalink }}"
+              integrity="{{ .Data.Integrity }}"
+              crossorigin="anonymous">
+        {{- end }}
+        {{- end }}
+        {{- $js := resources.Get "js/main.js" }}
+        {{- if hugo.IsDevelopment }}
+        {{- with $js | js.Build }}
+        <script type="module" src="{{ .RelPermalink }}"></script>
+        {{- end }}
+        {{- else }}
+        {{- with $js | js.Build (dict "minify" true) | fingerprint }}
+        <script type="module"
+                src="{{ .RelPermalink }}"
+                integrity="{{ .Data.Integrity }}"
+                crossorigin="anonymous"></script>
+        {{- end }}
+        {{- end }}
+        {{- with .Site.Params.gtag }}
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '{{ . }}');
+        </script>
+        {{ end -}}
+    </head>
+    <body class="flex print:block flex-col sm:flex-row min-h-screen bg-gradient-to-r from-5% from-zinc-800 to-zinc-950 text-zinc-50 antialiased">
+        {{ partial "sidebar.html" . -}}
+        <main class="grow sm:grow-0 sm:relative w-full sm:w-[calc(100%-240px-0.5rem)] sm:left-[240px] sm:my-2 p-4 rounded-lg shadow-lg bg-zinc-900 print:static print:w-auto">
+            {{ block "main" . }}{{ end -}}
+        </main>
+    </body>
+</html>

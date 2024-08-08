@@ -1,0 +1,65 @@
+profile: |
+  Creative Software & Data Engineer from Latvia, specializing in Go and Python programming.
+  A quick learner with extensive teamwork experience, skilled in developing and maintaining future-proof products.
+
+experience:
+  - name: TL Datortehnika
+    position: Full-stack Go Web Developer
+    date: Feb 2023 - Present
+    location: Riga, Latvia
+    skills: [Linux VPS, Git, Nginx, Django v4, Go, a-h/templ, MySQL, SQLite, REST API, Tailwind CSS, JavaScript, Alpine.js, htmx, webpack]
+    keynotes: |
+      - Production ready solution with Go, Echo, templ, sqlx;
+      - Database migration to the SQLite;
+      - Django compatible authentication system;
+      - Fast interactive (htmx) faceted filtering and FTS;
+
+  - name: TopSail Group
+    position: Senior Business Intelligence Developer
+    date: Jul 2016 - Present
+    location: Riga, Latvia
+    skills: [Power BI, Azure, Data Factory, Snowflake, MS SSIS, MS SSAS, MS SSRS, SQL, DAX, DWH, ETL, Python, Dynamics 365, DevOps]
+    keynotes: |
+      - World’s leading climate automation company (NL) | Sep 2019 – present  
+      Metadata driven ETL implementation with Azure Data Factory;  
+      DWH architecture for Dynamics 365, AFAS HR, Zuora Subscriptions;  
+      Microsoft Dynamics 365 - OData Entity deployment;  
+      
+      - Large shoes retailer company (NL) | Nov 2022 – Feb 2024  
+      On-Premise Microsoft BI Stack support: SQL, SSIS, SSAS, Power BI;  
+      DAX Query profiling and optimization (VertiPaq Analyzer);  
+      
+      - Large recruiting and staffing company (NL) | Jul 2017 – Aug 2023  
+      On-Premise DevOps configuration: Gitea, TeamCity, Octopus Deploy;  
+      IBM Cognos based DWH migration to the Microsoft On-Premise BI Stack;  
+      Provide backward compatibility for CRM migrations with dynamic SQL view generation;  
+      
+      - Company that produces plant-based meats (UK) | Jan 2022 – Jun 2023  
+      Dynamics 365 Export to Data Lake and DWH Data Modelling;  
+      Power BI Componet for currency exchange rate type selector;  
+      Power BI Dashboard design for Sales, Forecast, GL, P&L, BOM Insights;  
+      
+      - Large tour operator company (NL) | Jul 2016 – Jul 2017  
+      SSAS Tabular DAX measures development;  
+
+education:
+  - name: Transporta un Sakaru Instituts (TSI)
+    degree: BCS, Computer Science
+    location: Riga, Latvia
+    date: 2015 - 2019
+
+certificates:
+  - name: Mastering & Optimizing DAX
+    issuer: SQLBI
+  - name: Data Scientist & Engineer in Python
+    issuer: Dataquest.io
+  - name: CCNA Routing & Switching Essentials
+    issuer: Cisco Networking Academy
+
+languages:
+  - name: Russian
+    level: Native or bilingual proficiency
+  - name: English
+    level: Professional working proficiency
+  - name: Latvian
+    level: Limited working proficiency

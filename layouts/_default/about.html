@@ -1,0 +1,70 @@
+{{ define "main" -}}
+<article class="mx-auto prose prose-zinc dark:prose-invert">
+    <header>
+        <h1 id="{{ replace .Title " " "-" | lower }}">{{ .Title }}</h1>
+    </header>
+    <section class="grid gap-4 grid-cols-1 md:grid-cols-[auto_auto] [&_h4]:m-0">
+        {{- with .Site.Data.about.profile }}
+        <h4 id="profile">Profile</h4>
+        <div>{{ . | markdownify }}</div>
+        {{- end }}
+        {{- with .Site.Data.about.experience }}
+        <h4 id="experience">Experience</h4>
+        <ul class="list-none m-0 p-0 [&_li]:mt-0 [&_li]:mb-4 [&_li]:p-0">
+            {{- range . }}
+            <li class="flex flex-col space-y-1.5">
+                <div>{{ .position }}</div>
+                <div class="text-sm font-light text-zinc-400 !m-0">@ {{ .name }} | {{ .location }} | {{ .date }}</div>
+                {{- with .keynotes }}
+                <div class="text-xs font-light text-zinc-400 [&_ul]:!m-0 [&_li]:!m-0">{{ . | markdownify }}</div>
+                {{- end }}
+                {{- with .skills }}
+                <ul class="flex gap-x-2 flex-wrap list-none p-0 [&_li]:!mb-0 [&_li]:p-0">
+                    {{- range . }}
+                    <li>
+                        <span class="text-xs px-2 py-0.5 rounded-xl bg-sky-700">{{ . }}</span>
+                    </li>
+                    {{- end }}
+                </ul>
+                {{- end }}
+            </li>
+            {{- end }}
+        </ul>
+        {{- end }}
+        {{- with .Site.Data.about.education }}
+        <h4 id="education">Education</h4>
+        <ul class="list-none m-0 p-0 [&_li]:mt-0 [&_li]:mb-4 [&_li]:p-0">
+            {{- range . }}
+            <li>
+                <div>{{ .degree }}</div>
+                <div class="text-sm font-light text-zinc-400 !m-0">@ {{ .name }} | {{ .location }} | {{ .date }}</div>
+            </li>
+            {{- end }}
+        </ul>
+        {{- end }}
+        {{- with .Site.Data.about.certificates }}
+        <h4 id="certificates">Certificates</h4>
+        <ul class="list-none m-0 p-0 [&_li]:mt-0 [&_li]:mb-4 [&_li]:p-0">
+            {{- range . }}
+            <li>
+                <div>{{ .name }}</div>
+                <div class="text-sm font-light text-zinc-400">{{ .issuer }}</div>
+            </li>
+            {{- end }}
+        </ul>
+        {{- end }}
+        {{- with .Site.Data.about.languages }}
+        <h4 id="languages">Languages</h4>
+        <ul class="list-none m-0 p-0 [&_li]:mt-0 [&_li]:mb-4 [&_li]:p-0">
+            {{- range . }}
+            <li>
+                <div>{{ .name }}</div>
+                <div class="text-sm font-light text-zinc-400">{{ .level }}</div>
+            </li>
+            {{- end }}
+        </ul>
+        {{- end }}
+        <a href="/docs/resume.pdf">resume.pdf <span class="fa fa-square-arrow-up-right text-sm w-5"></span></a>
+    </section>
+</article>
+{{- end }}

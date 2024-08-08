@@ -1,0 +1,85 @@
+baseURL = 'https://weasel.dev/'
+title = 'weasel.dev'
+languageCode = 'en-us'
+
+[[module.mounts]]
+source = "static"
+target = "static"
+
+[[module.mounts]]
+source = "node_modules/@fontsource-variable/inter/files"
+target = "static/fonts"
+
+[[module.mounts]]
+source = "node_modules/@fortawesome/fontawesome-free/webfonts"
+target = "static/fonts"
+
+[params]
+gtag = 'G-C1TLVJQNRZ'
+
+[[menus.main]]
+name = "Home"
+weight = 1
+url = "/"
+[menus.main.params]
+icon = "fa fa-house"
+
+[[menus.main]]
+name = "About"
+weight = 2
+url = "/about/"
+[menus.main.params]
+icon = "fa fa-user"
+
+[[menus.main]]
+name = "Blog"
+weight = 3
+url = "/blog/"
+[menus.main.params]
+icon = "fa fa-newspaper"
+
+[[menus.projects]]
+name = "Software Projects"
+weight = 4
+url = "/software-projects/"
+[menus.projects.params]
+icon = "fa fa-code"
+
+[[menus.projects]]
+name = "Business Intelligence"
+weight = 5
+url = "/business-intelligence/"
+[menus.projects.params]
+icon = "fa fa-diagram-project"
+
+[[menus.social]]
+name = "Email"
+weight = 1
+url = "weasel@weasel.dev"
+[menus.social.params]
+icon = "fa fa-envelope"
+type = 'email'
+
+[[menus.social]]
+name = "LinkedIn"
+weight = 2
+url = "https://www.linkedin.com/in/denis-purvinsh/"
+[menus.social.params]
+icon = "fa-brands fa-linkedin"
+type = 'external'
+
+[[menus.social]]
+name = "GitHub"
+weight = 3
+url = "https://github.com/dv1x3r"
+[menus.social.params]
+icon = "fa-brands fa-github"
+type = 'external'
+
+[[menus.social]]
+name = "Instagram"
+weight = 4
+url = "https://www.instagram.com/dv1x_3r/"
+[menus.social.params]
+icon = "fa-brands fa-instagram"
+type = 'external'

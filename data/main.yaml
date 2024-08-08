@@ -1,0 +1,137 @@
+sidebar:
+  name: Deniss Purviņš
+  role : Software & Data Engineer
+  email : weasel@weasel.dev
+
+header:
+  hello: Hey, I'm Den
+  short: |
+     I build engaging and effective Web and CLI applications with Go and Python.
+     Currently available for BI Data Services as a [TopSail Group](https://topsailgroup.eu/) consultant.
+
+  slider:
+    before: I'm a
+    barrel:
+      - Software
+      - BI & Data
+    after: Engineer
+
+cards:
+  - type: 'Programming'
+    name: 'Go'
+    color: '#38bdf8'
+    image: 'img/cards/go-gopher.svg'
+    content: |
+      Experienced in building HTTP, TCP, REST API servers, and CLI applications
+      following SOLID principles for efficient and maintainable solutions.
+    modal: |
+      I use Go as my main programming language.
+      Go standard library is a Swiss army knife offering a wide range of tools,
+      and with extensions it becomes even more powerful.
+
+      | Technology | Description |
+      | --- | --- |
+      | Echo | Go web framework |
+      | a-h/templ | A language for writing HTML user interfaces |
+      | jmoiron/sqlx | General purpose extensions to database/sql |
+      | rs/zerolog | Zero Allocation JSON Logger |
+
+  - type: 'Programming'
+    name: 'Python'
+    color: '#fde047'
+    image: 'img/cards/python.svg'
+    content: |
+      A great tool with rich collection of libraries for data processing stuff.
+      I use it mostly for Jupyter Notebooks, CLI tools and prototypes.
+    modal: |
+      I use Python as a scripting language in the first place.
+      - Automate medium complexity tasks, open .csv, transform, clean and plot;
+      - Train and infer AI/ML models using PyTorch and make a CLI interfaces;
+
+      | Technology | Description |
+      | --- | --- |
+      | Django v4 | Batteries included website prototype |
+      | Jupyter Notebook | Interactive live coding |
+      | Pandas | Data transformation |
+      | Seaborn | High level plots |
+      | Matplotlib | Low level plots |
+      | PyTorch | ML library |
+
+  - type: 'Programming'
+    name: 'Web'
+    color: '#7c3aed'
+    image: 'img/cards/hugo.svg'
+    content: |
+      This website is built with Hugo, and hosted on GitHub Pages!
+      I use tailwind, htmx and alpine.js for seamless and fancy interactions.
+    modal: |
+      As a backend engineer I prefer to not [overengineer](https://grugbrain.dev) the frontend side.
+      I stick with simple and lightweight tools, such as tailwind, htmx, alpine.js and a bit of javascript.
+
+      I also have experience with [w2ui](https://w2ui.com/) JS UI Library.
+      It provides powerful grid and form components, which are ready for REST API integration.
+
+      | Technology | Description |
+      | --- | --- |
+      | [HTML, CSS, JS](https://www.w3schools.com/html/) | Markup, styles and interactions |
+      | [Tailwind CSS](https://tailwindcss.com) | Utility-first CSS framework |
+      | [Alpine.js](https://alpinejs.dev) | Lightweight, JavaScript framework |
+      | [htmx](https://htmx.org) | High power tools for HTML |
+      | [w2ui](https://w2ui.com) | JavaScript UI Library |
+      | [Hugo](https://gohugo.io) | Static site generator |
+
+  - type: 'Databases'
+    name: 'SQL'
+    color: '#2563eb'
+    image: 'img/cards/sql.svg'
+    content: |
+      Senior SQL Developer. I worked with SQL Server, PostgreSQL, MySQL and SQLite.
+      I craft simple queries that solve complex questions. Indexes and optimization included.
+
+  - type: 'Dashboards'
+    name: 'Power BI'
+    color: '#fbbf24'
+    image: 'img/cards/powerbi.svg'
+    content: |
+      I offer comprehensive support for the entire Data Warehouse development lifecycle, Data Modelling and Dashboard Design.
+    modal: |
+      I am a Senior Business Intelligence Developer with 7+ years of experience.
+      - Advanced SQL w/ Indexing & Query Optimization;
+      - Data Modelling (DWH, Star Schema, Snowflake);
+      - Batch Data Processing (ETL, ELT);
+      - OLTP and OLAP Processing;
+
+      | Technology | Description |
+      | --- | --- |
+      | Microsoft Power BI | Interactive data visualization |
+      | SQL Server Management Studio | SQL Server configuring, managing, and administering |
+      | SQL Server Analysis Services | Multidimensional and Tabular OLAP Server |
+      | SQL Server Integration Services | ETL data integration services |
+      | Azure SQL Server | Microsoft SQL Server in the Cloud |
+      | Azure Data Factory | Microsoft Data integration service in the Cloud |
+      | Azure Logic Apps | Cloud-based platform for automated workflows |
+      | Azure Storage Account | Cloud-based storage for blobs and files |
+      | Azure Key Vault | Cloud-based storage for sensitive credentials |
+      | Tabular Editor | SSAS tabular model editor (alternative to SSDT) |
+      | DAX Studio | The ultimate tool for working with DAX Queries |
+
+  - type: 'Development'
+    name: 'Terminal'
+    color: '#84cc16'
+    image: 'img/cards/bash.svg'
+    content: |
+      I can spin up and manage cloud linux servers, containerize applications, and write code using nvim and helix.
+    modal: |
+      I love working in the terminal overall. I prefer to old school system'd my projects on a Linux VPS.
+      It allows me to keep my costs in check and maintain discipline, instead of going serverless and
+      [scaling into bankruptcy](https://eieio.games/essays/scaling-one-million-checkboxes/#bound-my-costs).
+
+      | Technology | Description |
+      | --- | --- |
+      | [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) | Simple scripting and CI/CD automation |
+      | [Git](https://git-scm.com) / [lazygit](https://github.com/jesseduffield/lazygit) | Version control system |
+      | [Docker](https://www.docker.com/) / [lazydocker](https://github.com/jesseduffield/lazydocker) | Collaborative containerization software |
+      | [tmux](https://github.com/tmux/tmux) | Terminal multiplexer |
+      | [Neovim](https://neovim.io/) | Vim-based text editor |
+      | [Helix](https://helix-editor.com/) | A post-modern text editor |
+      | [FFmpeg](https://www.youtube.com/watch?v=9kaIXkImCAM) | Multimedia processing |

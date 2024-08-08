@@ -1,0 +1,88 @@
+<section x-data="{ sidebarOpen: true, sidebarInit() { this.sidebarOpen = window.innerWidth > 639 } }"
+         @resize.debounce.100.window="sidebarInit()"
+         x-init="sidebarInit()"
+         class="flex flex-col justify-between p-2 space-y-4 print:static sm:fixed print:h-auto sm:h-screen w-full sm:w-[240px] overflow-y-auto">
+    <div class="space-y-4">
+        <header class="flex justify-between">
+            <a href="{{ .Site.BaseURL }}">
+                <figure class="flex items-center space-x-2">
+                    <img src="/img/avatar.jpg" class="w-16 h-16 rounded-lg print:hidden" />
+                    <figcaption>
+                        <div class="text-sm font-semibold">{{ .Site.Data.main.sidebar.name }}</div>
+                        <div class="text-xs text-zinc-400">{{ .Site.Data.main.sidebar.role }}</div>
+                    </figcaption>
+                </figure>
+            </a>
+            <button @click="sidebarOpen = !sidebarOpen"
+                    aria-label="Open navbar"
+                    type="button"
+                    class="sm:hidden px-2 text-neutral-300 hover:text-white focus:text-white focus:outline-none transition"
+                    :class="{ 'rotate-180': sidebarOpen }">
+                <svg class="h-6 w-6 fill-current"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24">
+                    <path x-show="sidebarOpen" fill-rule="evenodd" clip-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" style="display: none;">
+                    </path>
+                    <path x-show="!sidebarOpen" fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                    </path>
+                </svg>
+            </button>
+        </header>
+        <div x-show="sidebarOpen"
+             x-collapse
+             hx-boost="true"
+             class="space-y-4 print:hidden">
+            {{- $section := .Page.Section }} {{/* root content folder name */}}
+            {{- $file := "" }} {{/* file name without extension */}}
+            {{- with .File }} {{ $file = .TranslationBaseName }} {{ end }}
+            {{- range $menuKey, $menuName := dict "main" "" "projects" "Projects" "social" "Let's connect" }}
+            <nav class="space-y-1.5">
+                {{- if ne $menuKey "main" }}
+                <h2 class="text-sm font-light text-zinc-400">{{ $menuName }}</h2>
+                {{- end }}
+                <ul class="space-y-1">
+                    {{- $menu := index $.Site.Menus $menuKey }}
+                    {{- range $menu.ByWeight }} {{ $base := path.Base .URL }}
+                    {{- $isActive := or ( eq $section $base ) ( eq $file $base ) ( and ( eq $base "/" ) ( eq $section "" ) ( or ( eq $file "_index" ) ( eq $file "" ) ) ) }}
+                    {{- $class := "block px-2 py-1.5 w-full text-left flex items-center justify-between rounded-lg transition active:scale-[0.98]" }}
+                    {{- if $isActive }} {{ $class = printf "%s %s" $class "bg-zinc-600" }}
+                    {{- else }} {{ $class = printf "%s %s" $class "hover:bg-zinc-700" }} {{ end }}
+                    <li>
+                        {{- if eq .Params.type "email" }}
+                        <button x-data="{ copyText: '{{ $.Site.Data.main.sidebar.email }}', copyNotification: false }"
+                                @click="if (copyNotification) return; navigator.clipboard.writeText(copyText); copyNotification = true; setTimeout(() => copyNotification = false, 2000)"
+                                class="{{ $class }}">
+                            <span class="flex items-center">
+                                <span class="{{ .Params.icon }} text-base w-6 mr-2"></span>
+                                <span x-show="!copyNotification" x-text="copyText" class="text-sm"></span>
+                                <span x-show="copyNotification" x-cloak class="text-sm text-green-500">Copied to clipboard!</span>
+                            </span>
+                            <span class="text-sm">
+                                <span x-show="!copyNotification" class="fa fa-clipboard"></span>
+                                <span x-show="copyNotification" class="fa fa-clipboard-check" x-cloak></span>
+                            </span>
+                        </button>
+                        {{- else }}
+                        <a class="{{ $class }}" href="{{ .URL | safeURL }}" aria-label="{{ .Name }}" {{ if eq .Params.type "external" }} target="_blank" {{ end }}>
+                            <span class="flex items-center">
+                                {{- if .Params.icon }}<span class="{{ .Params.icon }} text-base w-6 mr-2"></span>{{ end }}
+                                <span class="text-sm">{{ .Name }}</span>
+                            </span>
+                            {{- if eq .Params.type "external" }}
+                            <span class="fa fa-square-arrow-up-right text-sm"></span>
+                            {{- else }}
+                            <span class="htmx-indicator animate-spin fa fa-spinner text-sm"></span>
+                            {{- end }}
+                        </a>
+                        {{- end }}
+                    </li>
+                    {{- end }}
+                </ul>
+            </nav>
+            {{- end }}
+        </div>
+    </div>
+    <footer x-show="sidebarOpen" class="text-sm text-center print:hidden">
+        <a href="{{ .Site.BaseURL }}">© {{ now.Year }} weasel.dev</a>
+    </footer>
+</section>
