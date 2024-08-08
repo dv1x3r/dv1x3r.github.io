@@ -19,8 +19,10 @@
         {{- $css := resources.Get "sass/main.scss" }}
         {{- $css = $css | toCSS (dict "transpiler" "dartsass" "targetPath" "css/main.css" "includePaths" (slice "node_modules")) }}
         {{- $css = $css | postCSS (dict "use" "tailwindcss autoprefixer" "noMap" true) }}
+        {{- $js := resources.Get "js/main.js" | js.Build }}
         {{- if hugo.IsDevelopment }}
         <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+        <script type="module" src="{{ .RelPermalink }}"></script>
         {{- else }}
         {{- with $css | minify | fingerprint }}
         <link rel="stylesheet"
@@ -28,14 +30,7 @@
               integrity="{{ .Data.Integrity }}"
               crossorigin="anonymous">
         {{- end }}
-        {{- end }}
-        {{- $js := resources.Get "js/main.js" }}
-        {{- if hugo.IsDevelopment }}
-        {{- with $js | js.Build }}
-        <script type="module" src="{{ .RelPermalink }}"></script>
-        {{- end }}
-        {{- else }}
-        {{- with $js | js.Build (dict "minify" true) | fingerprint }}
+        {{- with $js | minify | fingerprint }}
         <script type="module"
                 src="{{ .RelPermalink }}"
                 integrity="{{ .Data.Integrity }}"
