@@ -21,7 +21,7 @@
         {{- $js := resources.Get "js/main.js" | js.Build }}
         {{- if hugo.IsDevelopment }}
         <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-        <script type="module" src="{{ .RelPermalink }}"></script>
+        <script type="module" src="{{ $js.RelPermalink }}"></script>
         {{- else }}
         {{- with $css | minify | fingerprint }}
         <link rel="stylesheet"
@@ -48,9 +48,9 @@
         {{- end }}
         {{- end }}
     </head>
-    <body class="flex print:block flex-col sm:flex-row min-h-screen bg-gradient-to-r from-5% from-zinc-800 to-zinc-950 text-zinc-50 antialiased">
+    <body class="flex print:block flex-col sm:flex-row min-h-screen bg-zinc-800 text-zinc-50 antialiased">
         {{ partial "sidebar.html" . -}}
-        <main class="grow sm:grow-0 sm:relative w-full sm:w-[calc(100%-240px-0.5rem)] sm:left-[240px] sm:my-2 p-4 rounded-lg shadow-lg bg-zinc-900 print:static print:w-auto">
+        <main class="grow sm:grow-0 sm:relative print:static w-full sm:w-[calc(100%-240px-0.5rem)] print:w-auto sm:left-[240px] sm:my-2 p-4 rounded-lg shadow-lg bg-zinc-900">
             {{ block "main" . }}{{ end -}}
         </main>
     </body>
