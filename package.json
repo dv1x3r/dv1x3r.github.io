@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "ihugo": "go install github.com/gohugoio/hugo@latest",
+    "setup": "go install github.com/gohugoio/hugo@latest",
     "build": "hugo",
     "watch": "hugo server"
   },
